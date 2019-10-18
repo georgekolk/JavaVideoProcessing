@@ -1,0 +1,17 @@
+{
+  "dirList":[
+
+      {"name":"C:\\KKK\\explore\\tags\\cat\\"},
+      {"name":"C:\\KKK\\explore\\tags\\catvideo\\"},
+      {"name":"C:\\KKK\\explore\\tags\\dog\\"},
+      {"name":"C:\\KKK\\explore\\tags\\dogvideo\\"},
+      {"name":"C:\\KKK\\explore\\tags\\video\\"},
+      {"name":"C:\\KKK\\explore\\tags\\naturevideo\\"}
+
+    ],
+  "saveDir": "C:\\\\KKK\\\\explore\\\\tags",
+  "ffmpegPath":"C:\\ffmpeg-4.2.1-win64-static\\bin\\ffprobe.exe",
+  "DBConnectionString":"jdbc:sqlite:C:/dd.db",
+  "tempDir":"C:\\KKK\\temp\\"
+
+}

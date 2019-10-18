@@ -24,18 +24,31 @@ public class Main {
      * **/
     public static void main(String[] args)throws Exception {
 
-        File tempDir = new File("C:\\KKK\\temp\\");
-        FFprobe ffprobe = new FFprobe("C:\\ffmpeg-4.2.1-win64-static\\bin\\ffprobe.exe");
-        DbHandler dbHandler = DbHandler.getInstance("jdbc:sqlite:C:/dd.db");
+        LoadConf config = new LoadConf(new File("config.json"));
 
-        ArrayList<File> fileListArray  = new ArrayList<File>();
-        fileListArray.add(new File("C:\\KKK\\explore\\tags\\cat\\"));
+        System.out.println(config.returnDBConnectionString());
+        System.out.println(config.returnFfmpegPath());
+        System.out.println(config.returnSaveDir());
+        System.out.println(config.returnDirList());
+
+
+        /*File tempDir = new File("C:\\KKK\\temp\\");
+        FFprobe ffprobe = new FFprobe("C:\\ffmpeg-4.2.1-win64-static\\bin\\ffprobe.exe");
+        DbHandler dbHandler = DbHandler.getInstance("jdbc:sqlite:C:/dd.db");*/
+
+        File tempDir = new File(config.returnTempDir());
+        FFprobe ffprobe = new FFprobe(config.returnFfmpegPath());
+        DbHandler dbHandler = DbHandler.getInstance(config.returnDBConnectionString());
+
+        ArrayList<File> fileListArray  = config.returnDirList();
+        /*fileListArray.add(new File("C:\\KKK\\explore\\tags\\cat\\"));
         fileListArray.add(new File("C:\\KKK\\explore\\tags\\catvideo\\"));
         fileListArray.add(new File("C:\\KKK\\explore\\tags\\dog\\"));
         fileListArray.add(new File("C:\\KKK\\explore\\tags\\dogvideo\\"));
         fileListArray.add(new File("C:\\KKK\\explore\\tags\\video\\"));
         fileListArray.add(new File("C:\\KKK\\explore\\tags\\naturevideo\\"));
 
+        System.exit(10);*/
 
         for (File directories:fileListArray) {
             for (File files:directories.listFiles()) {
@@ -68,7 +81,7 @@ public class Main {
 
                         System.out.println(fileName);
 
-                            String table = files.toString().replace("C:\\KKK\\explore\\tags\\", "");
+                            String table = files.toString().replace(config.returnSaveDir(), "");
                             table = table.substring(0, table.lastIndexOf("\\"));
                             table = table.substring(0, table.lastIndexOf("\\"));
 
@@ -80,9 +93,6 @@ public class Main {
                 }
             }
 
-            /*for (File listsInTempDirToFmpegProcess:tempDir.listFiles()){
-                Runtime.getRuntime().exec("c:\\ffmpeg-4.2.1-win64-static\\bin\\ffmpeg -f concat -i "+ listsInTempDirToFmpegProcess + " -c copy C:\\vid\\"+listsInTempDirToFmpegProcess.getName()+".mp4");
-            }*/
 
         }
     }
