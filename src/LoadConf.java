@@ -37,14 +37,14 @@ public class LoadConf {
                     JSONArray dirListJson = (JSONArray)overallConfig.get("dirList");
 
                     for (int i = 0; i < dirListJson.size(); i++) {
-                        System.out.print(dirListJson.get(i));
+                        //System.out.print(dirListJson.get(i));
 
                         JSONObject dirListJsonItem = (JSONObject) dirListJson.get(i);
-                        System.out.print(i+":");
+                        //System.out.print(i+":");
 
                         String tempStringForDirList = (String) dirListJsonItem.get("name");
 
-                        System.out.println(tempStringForDirList);
+                        //System.out.println(tempStringForDirList);
 
                         dirList.add(new File(tempStringForDirList));
                     }
