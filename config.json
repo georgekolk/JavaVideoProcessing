@@ -13,6 +13,7 @@
   "ffmpegPath":"C:\\ffmpeg-4.2.1-win64-static\\bin\\ffprobe.exe",
   "DBConnectionString":"jdbc:sqlite:C:/dd.db",
   "tempDir":"C:\\KKK\\temp\\",
-  "archiveDir": "C:\\KKK\\archive\\"
+  "archiveDir": "C:\\KKK\\archive\\",
+  "clearString": "C:\\KKK\\explore\\tags"
 
 }

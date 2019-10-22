@@ -14,7 +14,7 @@ public class LoadConf {
     private String saveDir = "";
     private String ffmpegPath = "";
     private String archiveDir = "";
-
+    private String clearString = "";
     private String DBConnectionString = null;
 
     public LoadConf(File configFile){
@@ -69,6 +69,10 @@ public class LoadConf {
                 if(overallConfig.containsKey("ffmpegPath")){
                     this.ffmpegPath = (String)overallConfig.get("ffmpegPath");
                 }
+                if(overallConfig.containsKey("clearString")){
+                    this.clearString = (String)overallConfig.get("clearString");
+                }
+
 
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -98,4 +102,10 @@ public class LoadConf {
     public String returnArchiveDir(){
         return this.archiveDir;
     }
+    public String returnClearString(){
+        return this.clearString;
+    }
+
+
+
 }

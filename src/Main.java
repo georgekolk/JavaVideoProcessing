@@ -49,9 +49,11 @@ public class Main {
                 break;
             case "list": //create list of files for ffmpeg by cheking hsh files
                 for (File directories:fileListArray) {
+                    //System.out.println(directories);
                     for (File files:directories.listFiles()){
                         if (files.isDirectory() && files.listFiles().length > 10){
-                            if (Hash.getDirHash(files) != Hash.getDirHashByFile(files) && Hash.getDirHashByFile(files) > 0){
+                            //System.out.println(files +" " +Hash.getDirHash(files) + " " + Hash.getDirHashByFile(files));
+                            if (Hash.getDirHash(files) != Hash.getDirHashByFile(files) && Hash.getDirHashByFile(files) != 0){
                                 CreateFmpegFileList.CreateFmpegFileList(files, tempDir);
                             }
                         }
@@ -110,7 +112,7 @@ public class Main {
                     for (File files:directories.listFiles()) {
                         if (files.isDirectory()){
                             if (Hash.getDirHashByFile(files) == 0){
-                                FileUtils.moveDirectory(files, new File(files.toString().replace("C:\\KKK\\explore\\tags", config.returnArchiveDir())));
+                                FileUtils.moveDirectory(files, new File(files.toString().replace(config.returnClearString(), config.returnArchiveDir())));
                             }
                         }
                     }
