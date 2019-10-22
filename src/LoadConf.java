@@ -13,7 +13,7 @@ public class LoadConf {
     private ArrayList<File> dirList = new ArrayList<File>();
     private String saveDir = "";
     private String ffmpegPath = "";
-
+    private String archiveDir = "";
 
     private String DBConnectionString = null;
 
@@ -50,6 +50,9 @@ public class LoadConf {
                     }
                 }
 
+                if(overallConfig.containsKey("archiveDir")){
+                    this.archiveDir = (String)overallConfig.get("archiveDir");
+                }
 
                 if(overallConfig.containsKey("DBConnectionString")){
                     this.DBConnectionString = (String)overallConfig.get("DBConnectionString");
@@ -91,5 +94,8 @@ public class LoadConf {
     }
     public String returnTempDir(){
         return this.tempDir;
+    }
+    public String returnArchiveDir(){
+        return this.archiveDir;
     }
 }

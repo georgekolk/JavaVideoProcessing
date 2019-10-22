@@ -12,6 +12,7 @@
   "saveDir": "C:\\\\KKK\\\\explore\\\\tags",
   "ffmpegPath":"C:\\ffmpeg-4.2.1-win64-static\\bin\\ffprobe.exe",
   "DBConnectionString":"jdbc:sqlite:C:/dd.db",
-  "tempDir":"C:\\KKK\\temp\\"
+  "tempDir":"C:\\KKK\\temp\\",
+  "archiveDir": "C:\\KKK\\archive\\"
 
 }
