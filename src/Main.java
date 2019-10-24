@@ -26,6 +26,8 @@ public class Main {
         File tempDir = new File(config.returnTempDir());
         FFprobe ffprobe = new FFprobe(config.returnFfmpegPath());
         ArrayList<File> fileListArray  = config.returnDirList();
+        DbHandler dbHandler = DbHandler.getInstance(config.returnDBConnectionString());
+        ArrayList<String> tagsList = new ArrayList<String>();
 
         switch (args[0].toLowerCase()) {
             case "sort": //moves mp4 to dimension dirs
@@ -49,13 +51,25 @@ public class Main {
                 break;
             case "list": //create list of files for ffmpeg by cheking hsh files
                 for (File directories:fileListArray) {
-                    //System.out.println(directories);
                     for (File files:directories.listFiles()){
                         if (files.isDirectory() && files.listFiles().length > 10){
-                            //System.out.println(files +" " +Hash.getDirHash(files) + " " + Hash.getDirHashByFile(files));
+
+                            String table = files.toString().replace("C:\\KKK\\explore\\tags\\", "");
+                            table = table.substring(0, table.lastIndexOf("\\"));
+
                             if (Hash.getDirHash(files) != Hash.getDirHashByFile(files) && Hash.getDirHashByFile(files) != 0){
                                 CreateFmpegFileList.CreateFmpegFileList(files, tempDir);
+
+                                for (File singleFile:files.listFiles()) {
+                                    tagsList.add(dbHandler.getTagsByFilename(singleFile.getName(), table).replace("#",""));
+                                }
+
+                                TagStatsUtil.sortAndSave(tagsList,new File(tempDir + "\\" + table+ files.toString().substring(files.toString().lastIndexOf("\\")+1) + ".txt"));
+                                tagsList.clear();
                             }
+
+
+
                         }
                     }
                 }

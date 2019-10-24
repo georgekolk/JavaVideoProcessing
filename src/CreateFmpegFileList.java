@@ -9,7 +9,7 @@ public class CreateFmpegFileList {
     public static void CreateFmpegFileList(File dir, File tempDir)throws IOException{
 
         delHshFiles(dir);
-        FileWriter nFile = new FileWriter(tempDir + "\\" + prepareYourAnus(dir.toString()));
+        FileWriter nFile = new FileWriter(tempDir + "\\" + prepareYourAnus(dir.toString()) + ".lst");
 
         for (File fileName: dir.listFiles()){
             nFile.write("file '"+fileName.getCanonicalPath()+"'\n"  );
