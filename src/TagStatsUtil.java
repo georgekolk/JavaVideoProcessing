@@ -11,7 +11,6 @@ public class TagStatsUtil {
         for (String tags : tagsList) {
             String[] words = tags.split("\\s+");
             for (String item : words) {
-                //System.out.println(item);
 
                 if (states.containsKey(item)) {
                     states.put(item, states.get(item) + 1);
@@ -22,7 +21,6 @@ public class TagStatsUtil {
         }
 
         Map<String, Integer> sortedMap = sortByValue(states);
-        //printMap(sortedMap);
 
         try {
             saveTagsToTxt(file, sortedMap);
@@ -65,7 +63,6 @@ public class TagStatsUtil {
         FileWriter fileToSaveTags = new FileWriter(file);
 
             for (Map.Entry<K, V> entry : map.entrySet()) {
-                //System.out.print(entry.getKey() + ",");
                 fileToSaveTags.write(entry.getKey() + ", ");
             }
 
